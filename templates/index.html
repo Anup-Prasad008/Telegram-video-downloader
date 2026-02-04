@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Telegram Video Downloader</title>
+
+    <!-- Responsive & SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Professional web tool to download public Telegram videos with selectable quality.">
+    <meta name="author" content="Your Name">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Accessibility -->
+    <meta name="color-scheme" content="dark light">
+</head>
+
+<body>
+
+<main class="app">
+
+    <!-- ========== HEADER ========== -->
+    <header class="app-header">
+        <h1>Telegram Video Downloader</h1>
+        <p class="subtitle">
+            Download public Telegram videos securely with adjustable quality.
+        </p>
+    </header>
+
+    <!-- ========== INPUT CARD ========== -->
+    <section class="card">
+        <form method="POST" action="/fetch" aria-label="Fetch Telegram video">
+
+            <div class="form-group">
+                <label for="link">Telegram Video Link</label>
+                <input
+                    type="url"
+                    id="link"
+                    name="link"
+                    placeholder="https://t.me/channelname/123"
+                    required
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <small class="hint">
+                    Only public Telegram channels and groups are supported.
+                </small>
+            </div>
+
+            <button type="submit" class="primary-btn">
+                Fetch Video
+            </button>
+        </form>
+    </section>
+
+    <!-- ========== QUALITY SELECTION ========== -->
+    {% if qualities %}
+    <section class="card card-highlight" aria-live="polite">
+        <h2>Select Download Quality</h2>
+
+        <form method="POST" action="/download">
+
+            <input type="hidden" name="link" value="{{ link }}">
+
+            <div class="form-group">
+                <label for="quality">Available Qualities</label>
+                <select id="quality" name="quality" required>
+                    {% for q in qualities %}
+                        <option value="{{ q }}">{{ q }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="primary-btn">
+                Download Video
+            </button>
+        </form>
+    </section>
+    {% endif %}
+
+    <!-- ========== ERROR HANDLING (OPTIONAL) ========== -->
+    {% if error %}
+    <section class="card card-error" role="alert">
+        <strong>Error:</strong> {{ error }}
+    </section>
+    {% endif %}
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="app-footer">
+        <p>
+            Built with <strong>Flask</strong> & <strong>Telethon</strong>
+        </p>
+        <small>
+            This tool works only for public Telegram media.
+        </small>
+    </footer>
+
+</main>
+
+</body>
+  </html>
