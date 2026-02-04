@@ -1,0 +1,232 @@
+/* ================================
+   DESIGN SYSTEM (Variables)
+================================ */
+:root {
+    --bg-main: #0b1220;
+    --bg-card: #111827;
+    --bg-card-alt: #0f172a;
+
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+
+    --error-bg: #3b0d0d;
+    --error-text: #fecaca;
+
+    --border: #1f2937;
+
+    --radius: 14px;
+    --radius-sm: 8px;
+
+    --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.35);
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    --transition: all 0.25s ease;
+    --max-width: 680px;
+}
+
+/* ================================
+   RESET & BASE
+================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
+
+    background: radial-gradient(
+        circle at top,
+        #0f172a,
+        var(--bg-main)
+    );
+
+    color: var(--text-primary);
+    line-height: 1.6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* ================================
+   APP LAYOUT
+================================ */
+.app {
+    width: 100%;
+    max-width: var(--max-width);
+}
+
+/* ================================
+   HEADER
+================================ */
+.app-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ================================
+   CARDS
+================================ */
+.card {
+    background: linear-gradient(
+        180deg,
+        var(--bg-card),
+        var(--bg-card-alt)
+    );
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 24px;
+}
+
+.card-highlight {
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.card-error {
+    background: var(--error-bg);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: var(--error-text);
+}
+
+/* ================================
+   FORM ELEMENTS
+================================ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+input,
+select {
+    background: #020617;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    color: var(--text-primary);
+    padding: 12px 14px;
+    font-size: 0.95rem;
+
+    transition: var(--transition);
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* ================================
+   BUTTONS
+================================ */
+.primary-btn {
+    width: 100%;
+    padding: 12px 16px;
+
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        var(--accent-hover)
+    );
+
+    color: #020617;
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-light);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+/* ================================
+   HINTS & TEXT
+================================ */
+.hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ================================
+   FOOTER
+================================ */
+.app-footer {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--text-muted);
+}
+
+.app-footer p {
+    margin: 0;
+}
+
+.app-footer small {
+    font-size: 0.8rem;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
